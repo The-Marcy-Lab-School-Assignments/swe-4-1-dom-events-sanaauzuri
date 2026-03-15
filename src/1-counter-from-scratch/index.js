@@ -10,6 +10,6 @@ incrementButton.addEventListener('click', () => {
 })
 resetButton.addEventListener('click', () => {
     currCount = 0 // Sets currCount to 0 when reset button is clicked
-    heading.textContent = currCount // Changes heading to the value of currCount
+    heading.textContent = currCount // Sets heading to the value of currCount
 })
 
