@@ -37,6 +37,11 @@ But an error is thrown.
 
 **Your Answer:**
 
+1. The error is either a reference error or a null error
+2. This error occurs because the `<script>` tag is placed in the `<head>`, which means Javascript runs before the browser accesses the`<body>` of the HTML. So when `document.querySelector('#my-button')` runs, the script is referencing that element before it exists. The `querySelector` will return null and the code breaks.
+3. The fix is to move the `<script src="index.js">` tag to the end of the `<body>` so the script runs after the HTML is loaded
+
+
 ## Question 2: event.target vs event.currentTarget
 
 Consider this HTML:
@@ -60,6 +65,10 @@ div.addEventListener('click', (event) => {
 When a user clicks the button, both `event.target` and `event.currentTarget` are logged. Explain what each property represents in this scenario and why they might be different.
 
 **Your Answer:**
+`event.currentTarget` - the element that the event listener is attached to (the one handling the event)
+`event.target` — the element that originally triggered the event (the button)
+`event.currentTarget` is used to distinguish the element that triggered the event from the element that is listening for the event
+<!-- I still don't fully understand this but I did go over the notes again, what is the difference between triggering and listening for an event? -->
 
 ## Question 3: Creating Elements Dynamically
 
@@ -95,7 +104,7 @@ document.body.append(productCard);
 However, when the page loads and the code is executed, the user isn't able to see the image, product name or product price. What is the issue with this code?
 
 **Your Answer:**
-
+The issue is that `productImage`, `productName`, and `productPrice` were never appended to `productCard` The code appends `productCard` to the `document.body`, but since nothing was appended **into** `productCard`, it shows as an empty div. The fix is to call `productCard.append(productImage, productName, productPrice)` before appending `productCard` to the body.
 
 ## Question 4: Event Delegation and event.target.closest()
 
@@ -136,6 +145,10 @@ todoList.addEventListener('click', (event) => {
 
 **Your Answer:**
 
+1. This approach is called **event delegation**. The alternative is adding a separate event listener to each `<li> `element individually. **Event delegation** is a better approach because it uses just one listener on the parent (`<ul>`) and use `event.target` to tell which child was clicked, which is more efficient and concise code.
+
+2. The `event.target.closest('li')` method finds the nearest ancestor (or the element itself) that matches the `li` selector. It's essential because it allows the code to identify which to-do was clicked.
+
 ## Question 5: NodeList
 
 Do some independent learning and reading about the `querySelectorAll()` method. Then, answer these questions:
@@ -144,3 +157,7 @@ Do some independent learning and reading about the `querySelectorAll()` method. 
 2. What is the difference between a `NodeList` and an array? Why is it important to know this difference?
 
 **Your Answer:**
+
+1. `querySelector()` returns the first single element that matches the CSS selector, or `null` if nothing matches. `querySelectorAll()` returns a **NodeList**, a collection of all matching elements. You'd use `querySelectorAll()` when you need to work with multiple elements at once. For example: `document.querySelectorAll('.todo-item')` grabs every item in a to-do list.
+
+2. The difference between **NodeList** and an array is that **NodeList** can only use array methods besides `forEach` if it is converted using `Array.from()` first, while an array can use any array methods without conversion. Knowing this difference prevents errors/bugs from trying to call array methods on **NodeList**
