@@ -61,11 +61,13 @@ playlists.forEach((playlist) => {
 playlistsGrid.addEventListener('click', (event) => {
   const clicked = event.target.closest('.playlist-card');
   if (!clicked) return;
-
+// Guard clause
   const previouslySelected = playlistsGrid.querySelector('.selected');
   if (previouslySelected) previouslySelected.classList.remove('selected');
   clicked.classList.add('selected');
 
   nowPlayingTitle.textContent = clicked.getAttribute('data-title');
 });
-// re-commit of index.js
+// Re-commit of index.js
+
+
