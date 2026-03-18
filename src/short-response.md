@@ -157,5 +157,4 @@ Do some independent learning and reading about the `querySelectorAll()` method. 
 
 1. `querySelector()` returns the first single element that matches the CSS selector, or `null` if nothing matches. `querySelectorAll()` returns a **NodeList**, a collection of all matching elements. You'd use `querySelectorAll()` when you need to work with multiple elements at once. For example: `document.querySelectorAll('.todo-item')` grabs every item in a to-do list.
 
-
 2. The difference between **NodeList** and an array is that **NodeList** can only use array methods besides `forEach` if it is converted using `Array.from()` first, while an array can use any array methods without conversion. Knowing this difference prevents errors/bugs from trying to call array methods on **NodeList**

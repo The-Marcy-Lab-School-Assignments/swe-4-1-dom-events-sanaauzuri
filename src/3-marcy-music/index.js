@@ -68,4 +68,4 @@ playlistsGrid.addEventListener('click', (event) => {
 
   nowPlayingTitle.textContent = clicked.getAttribute('data-title');
 });
-    
+// re-commit of index.js
