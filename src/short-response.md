@@ -65,7 +65,10 @@ div.addEventListener('click', (event) => {
 When a user clicks the button, both `event.target` and `event.currentTarget` are logged. Explain what each property represents in this scenario and why they might be different.
 
 **Your Answer:**
-
+`event.currentTarget` - the element that the event listener is attached to (the one handling the event)
+`event.target` — the element that originally triggered the event (the button)
+`event.currentTarget` is used to distinguish the element that triggered the event from the element that is listening for the event
+<!-- I still don't fully understand this but I did go over the notes again, what is the difference between triggering and listening for an event? -->
 
 ## Question 3: Creating Elements Dynamically
 
